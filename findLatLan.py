@@ -28,9 +28,10 @@ clusterer = KMeans(n_clusters=n_cluster, random_state=0).fit(points)
 # use line: f_vis.write(str(coordinates[a][0]) + "," + str(coordinates[a][1]) + "," + color[_] + ",square," + "\n") for accuracy
 # use line: f_vis.write(str(coordinates[a][0]) + "," + str(coordinates[a][1]) + "," + color[_] + ",," + "\n") for not accuracy
 for _ in range(n_cluster):
-    print(_, np.count_nonzero(clusterer.labels_ == _))
+    print('Cluster {0} has {1} airports.'.format(_, np.count_nonzero(clusterer.labels_ == _)))
     index_list = np.where(clusterer.labels_ == _)
     for a in index_list[0]:
+        # writing the IATA code for each cluster in cluster_group.txt
         cluster.write(str(a) + ":" + str(_) + "\n")
         # f_vis.write(str(coordinates[a][0]) + "," + str(coordinates[a][1]) + "," + color_5[_] + ",square," + "\n")
 
